@@ -91,8 +91,8 @@ import {
                   onPress={() => handleItemPress(item)}
                   activeOpacity={0.5}
                 >
-                  <Text style={{ fontFamily:"Ubuntu_300Light" }}>Client: {item.contrat}</Text>
-                  <Text style={{ fontFamily:"Ubuntu_300Light" }}>{item.compteur}</Text>
+                  <Text style={{ fontFamily:"Ubuntu_700Bold" }}>Client: {item.contrat}</Text>
+                  <Text style={{ fontFamily:"Ubuntu_500Medium" }}>{item.compteur}</Text>
                 </TouchableOpacity>
               )}
               keyExtractor={(item) => item.id}

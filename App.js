@@ -7,16 +7,18 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Details from './components/Details';
 import DetailItem from './components/DetailItem';
 import Createclient from './components/Createclient';
-
+import About from './components/About';
 export default function App() {
   const Stack = createNativeStackNavigator();
  
   return (
     <NavigationContainer>
       <Stack.Navigator>
+      <Stack.Screen name="About" component={About} />
         <Stack.Screen name="Details" component={Details} />
         <Stack.Screen name="DetailItem" component={DetailItem} />
         <Stack.Screen name="Createclient" component={Createclient} />
+        
       </Stack.Navigator>
     </NavigationContainer>  
   );
