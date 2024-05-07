@@ -14,11 +14,10 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-      <Stack.Screen name="About" component={About} />
-        <Stack.Screen name="Details" component={Details} />
-        <Stack.Screen name="DetailItem" component={DetailItem} />
-        <Stack.Screen name="Createclient" component={Createclient} />
-        
+        <Stack.Screen name="Details" component={Details} options={{headerTitleAlign: 'center',title:'Liste Des Clients', fontFamily:"Ubuntu_400Regular"}} />
+        <Stack.Screen name="DetailItem" component={DetailItem} options={{headerTitleAlign: 'center',title:'Détail Du Client', fontFamily:"Ubuntu_400Regular"}}/>
+        <Stack.Screen name="Createclient" component={Createclient} options={{headerTitleAlign: 'center',title:'Ajouter Un Client', fontFamily:"Ubuntu_400Regular"}} />
+        <Stack.Screen name="About" component={About} />
       </Stack.Navigator>
     </NavigationContainer>  
   );

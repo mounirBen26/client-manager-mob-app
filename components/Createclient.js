@@ -4,7 +4,7 @@ import React from 'react'
 const Createclient = () => {
   return (
     <View style={styles.container}>
-      <Text style={{ fontSize: 24,fontFamily:"Ubuntu_500Medium", marginBottom: 10 }}>Createclient</Text>
+      <Text style={{ fontSize: 18,fontFamily:"Ubuntu_500Medium", marginBottom: 10 }}>Créer un Nouveau client</Text>
       <TextInput placeholder='Contrat' style={styles.searchInput}></TextInput>
       <TextInput placeholder='Compteur ' style={styles.searchInput}></TextInput>
       <TextInput placeholder='Adresse' style={styles.searchInput}></TextInput>

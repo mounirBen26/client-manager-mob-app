@@ -21,7 +21,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.haceneben79.clientmangerbis"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -30,9 +31,16 @@
       [
         "expo-font",
         {
-          "fonts": ["node_modules/@expo-google-fonts/inter/Inter_100Thin.ttf"]
+          "fonts": [
+            "node_modules/@expo-google-fonts/inter/Inter_100Thin.ttf"
+          ]
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "27fd3190-74c2-4662-89b3-d7316aa7b3e2"
+      }
+    }
   }
 }

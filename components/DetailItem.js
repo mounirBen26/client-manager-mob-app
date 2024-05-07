@@ -9,7 +9,16 @@ const DetailItem = ({route, navigation}) => {
     const {item} = route.params;
   return (
     <View style={styles.container}>
-      <Text style={{ fontSize: 24,fontFamily:"Ubuntu_700Bold" }}>DetailItem: {item.contrat}</Text>
+      <Text style={{ fontSize: 15,fontFamily:"Ubuntu_700Bold",marginBottom: 10 }}>Contrat: {item.Num_contrat}</Text>
+      <Text style={{ fontSize: 14,fontFamily:"Ubuntu_700Bold",marginBottom: 10 }}>Nom: {item.intitule}</Text>
+      <Text style={{ fontSize: 14,fontFamily:"Ubuntu_700Bold",marginBottom: 10 }}>Lieu: {item.Adresse}</Text>
+      <Text style={{ fontSize: 14,fontFamily:"Ubuntu_700Bold",marginBottom: 10 }}>N° Compteur: {item.Num_compteur}</Text>
+      <Text style={{ fontSize: 14,fontFamily:"Ubuntu_700Bold",marginBottom: 10 }}>N° Puce: {item.Num_puce}</Text>
+      <Text style={{ fontSize: 14,fontFamily:"Ubuntu_700Bold",marginBottom: 10 }}>Type: {item.Type}</Text>
+      <Text style={{ fontSize: 14,fontFamily:"Ubuntu_700Bold",marginBottom: 10 }}>PMD: {item.PMD}</Text>
+      <Text style={{ fontSize: 14,fontFamily:"Ubuntu_700Bold",marginBottom: 10 }}>TC: {item.TC}</Text>
+      <Text style={{ fontSize: 14,fontFamily:"Ubuntu_700Bold",marginBottom: 10 }}>TP: {item.TP}</Text>
+      <Text style={{ fontSize: 14,fontFamily:"Ubuntu_700Bold",marginBottom: 10 }}>Crée par: {item.user}</Text>
       <Button style={{ fontSize: 24,fontFamily:"Ubuntu_700Bold" }} icon="pencil" mode="contained" buttonColor='#25A183' onPress={() => console.log('Pressed')}>
              Modifier
       </Button>
@@ -21,7 +30,7 @@ export default DetailItem
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: windowHeight * 0.25,
+    marginVertical: windowHeight * 0.2,
     marginHorizontal: windowWidth * 0.08,
     flex:0,
     backgroundColor: '#fff',
@@ -29,9 +38,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: 300,
     borderRadius: 5,
-
-
-    backgroundColor:'#DFE6F6',
-    height: windowHeight * 0.4
+    backgroundColor:'#DFE6E2',
+    height: windowHeight * 0.5,
   },
 })
