@@ -28,9 +28,10 @@ const Details = () => {
     const fetchClients = async () => {
       try {
         const clientsCollection = collection(db, 'clientsdb');
-        const q = query(clientsCollection,orderBy('CREATION', 'desc'));
+        const q = query(clientsCollection,orderBy('Num_contrat', 'asc'));
         const querySnapshot = await getDocs(q);
         const clientsData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        console.log('----',clientsData)
         setClients(clientsData);
         setIsLoading(false);
       } catch (error) {
