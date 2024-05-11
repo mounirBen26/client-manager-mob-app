@@ -8,12 +8,25 @@ import Details from './components/Details';
 import DetailItem from './components/DetailItem';
 import Createclient from './components/Createclient';
 import About from './components/About';
+import Home from './components/Home';
 export default function App() {
   const Stack = createNativeStackNavigator();
  
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator 
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#B0E0E6',
+        },
+        headerTintColor: 'black',
+        headerTitleStyle: {
+          fontFamily: 'Ubuntu_700Bold',
+        },
+        
+      }}
+      >
+        <Stack.Screen name="Home" component={Home} options={{headerTitleAlign: 'center',headerShown: false}} />
         <Stack.Screen name="Details" component={Details} options={{headerTitleAlign: 'center',title:'Liste Des Clients', fontFamily:"Ubuntu_400Regular"}} />
         <Stack.Screen name="DetailItem" component={DetailItem} options={{headerTitleAlign: 'center',title:'Détail Du Client', fontFamily:"Ubuntu_400Regular"}}/>
         <Stack.Screen name="Createclient" component={Createclient} options={{headerTitleAlign: 'center',title:'Ajouter Un Client', fontFamily:"Ubuntu_400Regular"}} />

@@ -18,6 +18,7 @@ const DetailItem = ({route, navigation}) => {
       <Text style={{ fontSize: 14,fontFamily:"Ubuntu_700Bold",marginBottom: 10 }}>PMD: {item.PMD}</Text>
       <Text style={{ fontSize: 14,fontFamily:"Ubuntu_700Bold",marginBottom: 10 }}>TC: {item.TC}</Text>
       <Text style={{ fontSize: 14,fontFamily:"Ubuntu_700Bold",marginBottom: 10 }}>TP: {item.TP}</Text>
+      <Text style={{ fontSize: 14,fontFamily:"Ubuntu_700Bold",marginBottom: 10 }}>Crée le: {item.CREATION}</Text>
       <Text style={{ fontSize: 14,fontFamily:"Ubuntu_700Bold",marginBottom: 10 }}>Crée par: {item.user}</Text>
       <Button style={{ fontSize: 24,fontFamily:"Ubuntu_700Bold" }} icon="pencil" mode="contained" buttonColor='#25A183' onPress={() => console.log('Pressed')}>
              Modifier
@@ -33,12 +34,11 @@ const styles = StyleSheet.create({
     marginVertical: windowHeight * 0.2,
     marginHorizontal: windowWidth * 0.08,
     flex:0,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
     width: 300,
     borderRadius: 5,
-    backgroundColor:'#DFE6E2',
+    backgroundColor:'#fff1e7',
     height: windowHeight * 0.5,
   },
 })

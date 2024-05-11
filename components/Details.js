@@ -1,5 +1,5 @@
 import { ActivityIndicator, StyleSheet, View, Text, TextInput, FlatList, TouchableOpacity, Pressable, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
-import { collection, onSnapshot, enableIndexedDbPersistence } from 'firebase/firestore';
+import { collection, getDocs, orderBy, query } from 'firebase/firestore';
 import { db } from '../firebase';
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
@@ -12,7 +12,6 @@ const Details = () => {
   const [clients, setClients] = useState([]);
   const [searchText, setSearchText] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-  const [isOffline, setIsOffline] = useState(false);
 
   let [fontsLoaded] = useFonts({
     Ubuntu_300Light,
@@ -29,29 +28,18 @@ const Details = () => {
     const fetchClients = async () => {
       try {
         const clientsCollection = collection(db, 'clientsdb');
-        const unsubscribe = onSnapshot(
-          clientsCollection,
-          (querySnapshot) => {
-            const clientsData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-            setClients(clientsData);
-            setIsLoading(false);
-            setIsOffline(false);
-          },
-          (error) => {
-            console.error('Error fetching clients:', error);
-            setIsLoading(false);
-            setIsOffline(true);
-          }
-        );
-
-        return unsubscribe;
+        const q = query(clientsCollection,orderBy('CREATION', 'desc'));
+        const querySnapshot = await getDocs(q);
+        const clientsData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        setClients(clientsData);
+        setIsLoading(false);
       } catch (error) {
         console.error('Error fetching clients:', error);
+        setIsLoading(false);
       }
     };
 
-    const unsubscribe = fetchClients();
-    return unsubscribe;
+    fetchClients();
   }, []);
 
   if (!fontsLoaded) {
@@ -69,8 +57,8 @@ const Details = () => {
   const filteredClients = clients.filter((client) =>
     client.Num_contrat !== undefined &&
     client.intitule !== undefined &&
-    client.contrat !== null &&
-    (client.Num_contrat.toString().includes(searchText) || client.intitule.toString().toLowerCase().includes(searchText.toLowerCase()))
+    client.Num_compteur !== undefined &&
+    (client.Num_contrat.toString().includes(searchText) || client.intitule.toString().toLowerCase().includes(searchText.toLowerCase()) || client.Num_compteur.toString().includes(searchText) )
   );
 
   return (
@@ -88,12 +76,6 @@ const Details = () => {
         </Pressable>
       </View>
       <Text style={{ fontFamily: 'Ubuntu_400Regular', fontSize: 18, marginBottom: 5 }}>Items List</Text>
-      {isOffline && (
-        <View style={styles.offlineContainer}>
-          <Text style={styles.offlineText}>You are currently offline.</Text>
-          <Text style={styles.offlineText}>Data may be outdated.</Text>
-        </View>
-      )}
       {isLoading ? (
         <ActivityIndicator size="large" color="#0000ff" />
       ) : (
@@ -152,11 +134,11 @@ const styles = StyleSheet.create({
     width: 330,
     paddingHorizontal: 6,
     paddingVertical: 12,
-    borderColor: '#DFE6DA',
-    borderWidth: 1,
+    
+    borderWidth: 0,
     borderRadius: 5,
     marginBottom: 5,
-    backgroundColor: '#DFE6E2',
+    backgroundColor: '#A8D0E6',
   },
   emptyText: {
     marginTop: 20,
@@ -176,3 +158,4 @@ const styles = StyleSheet.create({
     color: '#856404',
   },
 });
+
